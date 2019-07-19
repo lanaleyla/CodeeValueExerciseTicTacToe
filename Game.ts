@@ -54,6 +54,7 @@ export class Game{
         }
         else if(this.status===GameStatus.Complited) {//player tries to move but there is a winner allready, say that the game is over
             console.log("false, Game over "+this.winner+"won");
+            return false;
         }
         else if(!this.check_index(index_r,index_c))
         {
