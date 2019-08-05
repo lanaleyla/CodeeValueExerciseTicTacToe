@@ -1,18 +1,12 @@
-export class Player{
- //player in the game
-    private name:string;
-    private shape:string;
+export class Player {
 
-    constructor(name:string,shape:string )
-    {
-        this.name=name;
-        this.shape=shape;
+    constructor(private name: string, private shape: string) {
     }
 
-    get player_name():string{
+    get player_name(): string {
         return this.name;
     }
-    get player_shape():string{
+    get player_shape(): string {
         return this.shape;
     }
 }

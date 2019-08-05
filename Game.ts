@@ -8,16 +8,12 @@ export class Game{
     public board:board;
     public players:Player[]=[];
     public moves:move[];
-    public rows:number;
-    public cols:number;
     public num:number;
     public status:GameStatus;
     public winner:string;
 
-    constructor(rows:number,columns:number){
-        this.rows=rows;
-        this.cols=columns;
-        this.board=new board(this.rows,this.cols);
+    constructor(public rows:number,public columns:number){
+        this.board=new board(this.rows,this.columns);
         this.num=0;    //who's turn is counter
         this.status=GameStatus.InProgress;  //game status
         this.moves=[]; //moves array
@@ -72,7 +68,7 @@ export class Game{
     //check the input 
     public check_index(index_r:number,index_c:number):boolean{
         if(index_r<this.rows&& index_r>=0){
-            if(index_c<this.cols && index_c>=0)
+            if(index_c<this.columns && index_c>=0)
             return true;
         }
         else {
@@ -105,25 +101,25 @@ export class Game{
         //runing on rows
         for(let j=0;j<this.board.rows;j++)
         {
-            for(let i=0;i<this.board.cols;i++){
+            for(let i=0;i<this.board.columns;i++){
                 if(this.board.game_board[j][i]===currentPlayer.player_shape ){
                     ifWin=ifWin+1;}   
             }
-            if(ifWin===this.board.cols){
+            if(ifWin===this.board.columns){
                 this.status=GameStatus.Complited;
                 return currentPlayer;
             }else ifWin=0;
         }
 
         //runing on cols
-        for(let j=0;j<this.board.cols;j++)
+        for(let j=0;j<this.board.columns;j++)
         {
-            for(let i=0;i<this.board.cols;i++)
+            for(let i=0;i<this.board.columns;i++)
             {
                 if(this.board.game_board[i][j]===currentPlayer.player_shape ){
                     ifWin=ifWin+1;} 
             }
-            if(ifWin===this.board.cols){
+            if(ifWin===this.board.columns){
                 this.status=GameStatus.Complited;
                 return currentPlayer;
             }else ifWin=0;
